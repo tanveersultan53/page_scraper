@@ -1,0 +1,593 @@
+Stack Overflow
+About
+                        Products
+For Teams
+Stack Overflow
+Public questions & answers
+Stack Overflow for Teams
+Where developers & technologists share private knowledge with coworkers
+Talent
+                                Build your employer brand
+Advertising
+Reach developers & technologists worldwide
+About the company
+Loading…
+current community
+            Stack Overflow
+help
+chat
+            Meta Stack Overflow
+your communities            
+Sign up or log in to customize your list.                
+more stack exchange communities
+company blog
+Log in
+Sign up
+                    Home
+Public
+ Questions
+                    Tags
+                    Users
+                    Companies
+Collectives
+ Explore Collectives
+Teams
+Stack Overflow for Teams
+        – Start collaborating and sharing organizational knowledge.
+Create a free Team
+Why Teams?
+Teams
+                            Create free Team
+Collectives™ on Stack Overflow
+Find centralized, trusted content and collaborate around the technologies you use most.
+                    Learn more
+Teams
+Q&A for work
+Connect and share knowledge within a single location that is structured and easy to search.
+                    Learn more
+ImportError: No Module Named bs4 (BeautifulSoup)
+        Ask Question
+Asked
+9 years, 11 months ago
+Modified
+7 days ago
+Viewed
+                        412k times
+            175
+24
+I'm working in Python and using Flask. When I run my main Python file on my computer, it works perfectly, but when I activate venv and run the Flask Python file in the terminal, it says that my main Python file has "No Module Named bs4." Any comments or advice is greatly appreciated.
+python beautifulsoup flask importerror
+Share
+Improve this question
+                    Follow
+        asked Aug 2, 2012 at 18:47
+harrytharryt
+1,91322 gold badges1313 silver badges1010 bronze badges
+2
+pip3 install BeautifulSoup4
+– Asfar Hussain Siddiqui
+Mar 19 at 21:05
+Lol, my problem was pipenv installing bs4 with ipython as dev packages and then later reinstalling without including dev. Moving it to prod packages worked.
+– combinatorist
+Apr 8 at 22:57
+Add a comment
+ | 
+                                        24 Answers
+                                    24
+            Sorted by:
+            Reset to default
+                    Trending sort available 
+Trending sort
+Trending sort is based off of the default sorting method — by highest score — but it boosts votes that have happened recently, helping to surface more up-to-date answers.
+It falls back to sorting by highest score if no posts are trending.
+Switch to Trending sort
+                        Highest score (default)
+                        Trending (recent votes count more)
+                        Date modified (newest first)
+                        Date created (oldest first)
+            273
+Activate the virtualenv, and then install BeautifulSoup4:
+$ pip install BeautifulSoup4
+When you installed bs4 with easy_install, you installed it system-wide. So your system python can import it, but not your virtualenv python.
+If you do not need bs4 to be installed in your system python path, uninstall it and keep it in your virtualenv.
+For more information about virtualenvs, read this 
+Share
+Improve this answer
+                    Follow
+edited Nov 22, 2017 at 11:17
+parik
+2,1551212 gold badges3737 silver badges6464 bronze badges
+        answered Aug 2, 2012 at 19:52
+Balthazar RouberolBalthazar Rouberol
+6,50222 gold badges3434 silver badges4141 bronze badges
+5
+6
+Imagine (for the example sake) that you're working on a project that requires a specific version of a module. You might also be working on a different project, requiring a different version of this module.  If each project is located in virtualenvs, you will have two absolutely independent python environments, instead of having a system python environment with two versions of the same module.  Keep your system env clean. Work in virtualenvs.
+– Balthazar Rouberol
+Aug 2, 2012 at 19:58
+1
+I cannot install, get error locale.Error: unsupported locale setting Do you have any idea ?
+– zukijuki
+May 1, 2017 at 1:26
+1
+I can't truly guess without a traceback, but have a look at stackoverflow.com/questions/14547631/…
+– Balthazar Rouberol
+May 1, 2017 at 9:10
+Also remember that if you're using a venv, you have to use the python binary from that venv. /usr/bin/python (on a Mac OS) is wrong; it should be <your path to your venv>/bin/python
+– blamblambunny
+Jun 28, 2019 at 13:30
+I had to exit() Python so that the PIP install would work :)
+– Eoin
+Feb 12, 2020 at 19:31
+Add a comment
+ | 
+            62
+For python2.x:
+sudo pip install BeautifulSoup4
+For python3:
+sudo apt-get install python3-bs4
+Share
+Improve this answer
+                    Follow
+        answered Jul 4, 2015 at 13:35
+SparkAndShineSparkAndShine
+15.8k1919 gold badges8686 silver badges129129 bronze badges
+2
+3
+The official site crummy.com failed to provide python3-bs4 package name.
+– Suraj
+May 24, 2016 at 8:41
+2
+for python 3 too sudo pip install BeautifulSoup4 works
+– ishandutta2007
+Dec 18, 2019 at 3:09
+Add a comment
+ | 
+            17
+Just tagging onto Balthazar's answer. Running
+pip install BeautifulSoup4
+did not work for me. Instead use 
+pip install beautifulsoup4
+Share
+Improve this answer
+                    Follow
+edited May 29, 2017 at 14:00
+Balthazar Rouberol
+6,50222 gold badges3434 silver badges4141 bronze badges
+        answered Mar 14, 2015 at 18:27
+Airswoop1Airswoop1
+41144 silver badges77 bronze badges
+0
+Add a comment
+ | 
+            10
+Try this:
+sudo python3 -m pip install bs4
+Share
+Improve this answer
+                    Follow
+        answered Jun 10, 2019 at 9:59
+Rayid AliRayid Ali
+10111 silver badge33 bronze badges
+Add a comment
+ | 
+            10
+pip3 install BeautifulSoup4
+Try this. It works for me. The reason is well explained here..
+Share
+Improve this answer
+                    Follow
+edited Mar 28, 2020 at 15:03
+        answered Dec 29, 2018 at 21:38
+Wimukthi RajapakshaWimukthi Rajapaksha
+80111 gold badge1010 silver badges2121 bronze badges
+Add a comment
+ | 
+            6
+I have been searching far and wide in the internet.
+I'm using Python 3.6 and MacOS. I have uninstalled and installed with pip3 install bs4 but that didn't work. It seems like python is not able to detect or search the bs4 module.
+This is what worked:
+python3 -m pip install bs4
+The -m option allows you to add a module name.
+https://docs.python.org/3/using/cmdline.html
+Share
+Improve this answer
+                    Follow
+        answered Nov 11, 2020 at 8:03
+Clark NgoClark Ngo
+9322 silver badges55 bronze badges
+2
+1
+you, my friend are a lifesaver
+– M. Junaid Salaat
+Apr 5 at 7:29
+This works for me running Python 3.6 on iMac in the year 2022.
+– Siddiqui Noor
+May 29 at 7:04
+Add a comment
+ | 
+            5
+If you are using Anaconda for package management, following should do:
+conda install -c anaconda beautifulsoup4
+Share
+Improve this answer
+                    Follow
+        answered Aug 10, 2018 at 5:57
+Arnab BiswasArnab Biswas
+4,21622 gold badges3838 silver badges5454 bronze badges
+1
+1
+The option "-c anaconda" is the default, so "conda install beautifulsoup4" does the same and is easier to memorize :-)
+– PatrickT
+Apr 29, 2020 at 23:56
+Add a comment
+ | 
+            5
+I will advise you to uninstall the bs4 library by using this command:
+pip uninstall bs4
+and then install it using this command:
+sudo apt-get install python3-bs4
+I was facing the same problem in my Linux Ubuntu when I used the following command for installing bs4 library:
+pip install bs4
+Share
+Improve this answer
+                    Follow
+edited Feb 7, 2019 at 12:03
+        answered Apr 17, 2018 at 18:08
+Shashank RawatShashank Rawat
+1,3111212 silver badges1414 bronze badges
+Add a comment
+ | 
+            5
+If you use Pycharm, go to preferences - project interpreter - install bs4.
+If you try to install BeautifulSoup, it will still show that no module named bs4.
+Share
+Improve this answer
+                    Follow
+edited Jun 5, 2020 at 6:23
+frianH
+6,82566 gold badges1717 silver badges4242 bronze badges
+        answered Sep 30, 2016 at 18:44
+AliceAlice
+15811 silver badge99 bronze badges
+0
+Add a comment
+ | 
+            4
+This worked for me.
+pipenv pip install BeautifulSoup4
+Share
+Improve this answer
+                    Follow
+        answered May 6, 2021 at 2:32
+SachishSachish
+31922 silver badges1212 bronze badges
+Add a comment
+ | 
+            4
+It is so annoying to find the answer has nothing to do with BeautifulSoup. To the linux users, be vary of running the command 'python', version 2 exits and you may have forgotten to change the bash file alias of python. And so you might have created the virtual environment using 3 with
+python3 -m venv .venv
+So, to install things, go with
+python3 -m pip install beautifulsoup4
+not
+pip install beautifulsoup4
+Things get installed in different versions and you scratch your head as to what is going on.
+Share
+Improve this answer
+                    Follow
+        answered Nov 9, 2021 at 21:09
+Muhammad Mubashirullah DurraniMuhammad Mubashirullah Durrani
+1901111 bronze badges
+0
+Add a comment
+ | 
+            3
+I did what @rayid-ali said, except I'm on a Windows 10 machine so I left out the sudo. That is, I did the following:
+python3 -m pip install bs4
+and it worked like a pycharm. Worked like a charm anyway.
+Share
+Improve this answer
+                    Follow
+        answered Jul 4, 2020 at 4:03
+23r0c00123r0c001
+12111 silver badge66 bronze badges
+Add a comment
+ | 
+            2
+pip install --user BeautifulSoup4
+Share
+Improve this answer
+                    Follow
+edited Oct 7, 2019 at 7:45
+taras
+6,0921010 gold badges3737 silver badges4848 bronze badges
+        answered Oct 7, 2019 at 6:51
+Manoj KumarManoj Kumar
+13766 bronze badges
+Add a comment
+ | 
+            1
+pip3.7 install bs4
+Try this. It works with python 3.7
+Share
+Improve this answer
+                    Follow
+edited Sep 17, 2019 at 18:51
+        answered Sep 17, 2019 at 18:27
+Franck HervéFranck Hervé
+6611 silver badge55 bronze badges
+Add a comment
+ | 
+            1
+A lot of tutorials/references were written for Python 2 and tell you to use pip install somename. If you're using Python 3 you want to change that to pip3 install somename.
+Share
+Improve this answer
+                    Follow
+        answered Nov 3, 2019 at 8:52
+ClariusClarius
+92888 silver badges77 bronze badges
+Add a comment
+ | 
+            0
+The easiest is using easy_install.
+easy_install bs4 
+It will work if pip fails.
+Share
+Improve this answer
+                    Follow
+        answered Apr 19, 2018 at 21:45
+puma-limapuma-lima
+1933 bronze badges
+0
+Add a comment
+ | 
+            0
+You might want to try install bs4 with 
+pip install --ignore-installed BeautifulSoup4
+if the methods above didn't work for you.
+Share
+Improve this answer
+                    Follow
+        answered May 24, 2020 at 18:52
+zx_zx_
+3311 silver badge66 bronze badges
+Add a comment
+ | 
+            0
+Try reinstalling the module
+OR
+Try installing with beautiful soup with the below command
+pip install --ignore-installed BeautifulSoup4
+Share
+Improve this answer
+                    Follow
+edited Jun 19, 2020 at 17:48
+Abhishek Bhagate
+5,29233 gold badges1313 silver badges3131 bronze badges
+        answered Jun 19, 2020 at 16:07
+Harsith Priyan SivanandhamHarsith Priyan Sivanandham
+133 bronze badges
+Add a comment
+ | 
+            0
+Addendum to the original query:
+modules.py
+help('modules')
+$python modules.py
+It lists that module bs4 already been installed.
+_codecs_kr          blinker             json                six
+_codecs_tw          brotli              kaitaistruct        smtpd
+_collections        bs4                 keyword             smtplib
+_collections_abc    builtins            ldap3               sndhdr
+_compat_pickle      bz2                 lib2to3             socket
+Proper solution is:
+pip install --upgrade bs4
+Should solve the problem.
+Not only that, it will show same error for other modules as well.
+So you got to issue the pip command same way as above for those errored module(s).
+Share
+Improve this answer
+                    Follow
+        answered Jul 29, 2020 at 19:12
+Biddut MitraBiddut Mitra
+7533 bronze badges
+Add a comment
+ | 
+            0
+In case you are behind corporate proxy then try using following command
+pip install --proxy=http://www-YOUR_PROXY_URL.com:PROXY_PORT BeautifulSoup4
+Share
+Improve this answer
+                    Follow
+        answered Aug 17, 2020 at 16:04
+RohitRohit
+6,5951616 gold badges5555 silver badges101101 bronze badges
+Add a comment
+ | 
+            0
+The better method is ("-U" : Upgrade all package(s) to the  newest  available  version.) :
+$ python3 -m pip install -U pip && python3 -m pip install -U bs4 
+or install from apt (Debian, Ubuntu, Mint, etc.) :
+$ sudo apt install python3-bs4
+Share
+Improve this answer
+                    Follow
+        answered Nov 22, 2021 at 18:29
+amzy-0amzy-0
+11511 silver badge44 bronze badges
+Add a comment
+ | 
+            0
+One more solution for PyCharm:
+Go to File -> Settings -> Python Interpreter, click on plus sign and find beautifulsoup4.
+Click install.
+Share
+Improve this answer
+                    Follow
+        answered Dec 31, 2021 at 4:39
+Roy O'BannonRoy O'Bannon
+11111 silver badge77 bronze badges
+Add a comment
+ | 
+            0
+I also experienced this problem with Python 3. In my case I was able to solve it by running:
+$ pip3 install BeautifulSoup4
+Instead of:
+$ pip install BeautifulSoup4
+Share
+Improve this answer
+                    Follow
+        answered Jul 3 at 4:17
+João Felipe SantanaJoão Felipe Santana
+10611 silver badge22 bronze badges
+Add a comment
+ | 
+            0
+You will need to have pip in your PATH environment variable. If you don't have it then use this link: python -m pip install beautifulsoup4
+This worked for me. Hopefully, it works for you too.
+Share
+Improve this answer
+                    Follow
+        answered Jul 18 at 22:09
+ann jennyann jenny
+1
+Add a comment
+ | 
+                                    Your Answer
+Thanks for contributing an answer to Stack Overflow!Please be sure to answer the question. Provide details and share your research!But avoid …Asking for help, clarification, or responding to other answers.Making statements based on opinion; back them up with references or personal experience.To learn more, see our tips on writing great answers.
+Draft saved
+Draft discarded
+Sign up or log in
+ Sign up using Google
+ Sign up using Facebook
+ Sign up using Email and Password
+Submit
+Post as a guest
+Name
+Email
+Required, but never shown
+Post as a guest
+Name
+Email
+Required, but never shown
+Post Your Answer                                        
+                                            Discard
+                                                By clicking “Post Your Answer”, you agree to our terms of service, privacy policy and cookie policy
+Not the answer you're looking for? Browse other questions tagged python beautifulsoup flask importerror  or ask your own question.                            
+                        The Overflow Blog
+Automate the boring parts of your job
+Data analytics: Less creepy, more empowering
+                        Featured on Meta
+Announcing the Stacks Editor Beta release!
+Trending: A new answer sorting option
+Linked
+1
+ImportError: No module named bs4
+378
+Python locale error: unsupported locale setting
+4
+ImportError: No module named bs4 in Windows
+1
+ImportError: No module named 'bs4' with virtualenv python3
+2
+ENML to plain text converter for Python
+1
+why I got ( ModuleNotFoundError: No module named 'ModuleName' ) error in VSCode, windows 10?
+0
+ModuleNotFoundError: no module named bs4
+-2
+ImportError: No module named 'bs4' in django only
+-1
+Installing package via pip works fine but still import error
+-3
+Is there a better way to webscrape MSFT data in shorter lines? I have tried it already but get the issue 'module' object is not callable
+See more linked questions
+Related
+2250
+Calling a function of a module by using its name (a string)
+584
+Python error "ImportError: No module named"
+1642
+Proper way to declare custom exceptions in modern Python?
+1456
+Creating a singleton in Python
+681
+ImportError: Cannot import name X
+1391
+Relative imports for the billionth time
+197
+"ImportError: No module named" when trying to run Python script
+793
+ImportError: No module named requests
+348
+Relative imports - ModuleNotFoundError: No module named x
+1
+ModuleNotFoundError: No module named 'bs4' [BeautifulSoup]
+            Hot Network Questions
+                    Why does Arduino Nano 33 IoT always choose the weakest WiFi BSSID?
+                    What are modes added with sharps and flats to make them sound better called?
+                    Ideas for a human convenient, long term date system spanning many trillions of years
+                    Would RTGs be more effective on Titan than in space?
+                    Is a sha256 hash of a unix timestamp a strong password
+                    Why is a witness evidentiary if it cannot be disproven?
+                    Unknown filesystem type 'exfat' on Ubuntu 22.04
+                    Why do I get two different ratings for same position (López Opening: Morphy Defense, Caro Variatio) on chess.com?
+                    Editors, having a initial idea about the final decision from the first look at the paper?
+                    Multiply numbers by their depth
+                    Two mystical trees
+                    Is it correct to say "his wife ghosted him although they lived in the same house"?
+                    What is the meaning about the IRS saying that "copy A "scannable but online version printed not scannable?
+                    New paper claims quantum polylog time attack on AES
+                    What does the voltage of an I/O pin mean?
+                    In my maths textbook, what is 和 doing in the question 两次所得的和相同吗？
+                    Polyomino that can tile itself
+                    How to hide what I'm playing in Discord
+                    A word for absolving a person of a good thing
+                    Can we construct a pair of random variables having any given covariance?
+                    Valid model comparison/selection? Poisson, negative binomial, zero-inflated poisson, z-i negative binomial with AIC
+                    Where is the LEGO logo on the Tartan Batman minifigure’s cowl piece?
+                    How does the Society of the Technologically Anonymous hide its origins and operations?
+                    How can I animate vertex weights along curved mesh
+            more hot questions
+            Question feed
+                Subscribe to RSS
+                        Question feed
+                        To subscribe to this RSS feed, copy and paste this URL into your RSS reader.
+lang-py
+Stack Overflow
+Questions
+Help
+Products
+Teams
+Advertising
+Collectives
+Talent
+Company
+About
+Press
+Work Here
+Legal
+Privacy Policy
+Terms of Service
+Contact Us
+Cookie Settings
+Cookie Policy
+Stack Exchange Network
+                                    Technology
+                                    Culture & recreation
+                                    Life & arts
+                                    Science
+                                    Professional
+                                    Business
+                                    API
+                                    Data
+Blog
+Facebook
+Twitter
+LinkedIn
+Instagram
+Site design / logo © 2022 Stack Exchange Inc; user contributions licensed under CC BY-SA.                    rev 2022.7.26.42671
+                        Your privacy
+                        By clicking “Accept all cookies”, you agree Stack Exchange can store cookies on your device and disclose information in accordance with our Cookie Policy.
+                            Accept all cookies
+                            Customize settings
