@@ -34,12 +34,12 @@ def download_file(soup):
             f.write(strong_tag.text.strip())
             f.write('\n')
 
-    with open('readme.txt') as input_file, open(f'{file_name}.txt', 'w') as outfile:
+    with open('readme.txt') as input_file, open(f'temp/{file_name}.txt', 'w') as outfile:
         for line in input_file:
             if not line.strip(): continue  # skip the empty line
             outfile.write(line)  # non-empty line. Write it to output
 
     if os.path.exists("readme.txt"):
         os.remove("readme.txt")  # one file at a time
-    
+
     return file_name
